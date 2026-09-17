@@ -1,6 +1,11 @@
 'use strict';
 
 (function loadMineradioIndexModules() {
+  // 拦截鼠标侧键（后退/前进）：Chromium 默认会触发前进后退导航，在 Electron
+  // 中表现为整个页面重载，播放状态与视觉现场都会丢失。
+  window.addEventListener('mouseup', function (event) {
+    if (event.button === 3 || event.button === 4) event.preventDefault();
+  }, true);
   const moduleCacheBust = String(Date.now());
   const modulePaths = [
     'js/modules/00-state/00-core-stores.js',
