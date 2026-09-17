@@ -74,6 +74,10 @@ Windows 用户可以从本次发布公告列出的新网盘入口下载安装包
 
 Linux 版与 Windows 版共用同一份源码和功能集合，当前在 Ubuntu 26.04 + GNOME + Wayland + NVIDIA RTX 4060 上实测通过。
 
+> Linux 预发布构建由 fork 仓库 [huisheng66/Mineradio-for-linux](https://github.com/huisheng66/Mineradio-for-linux)
+> 以 `v2.2.0-linux.1` 提供，可直接下载 AppImage / deb。上游合并进度见
+> [PR #477](https://github.com/XxHuberrr/Mineradio/pull/477)。
+
 ### 构建与安装
 
 ```bash
@@ -84,11 +88,11 @@ npm run build:linux
 `npm run build:linux` 会同时生成 AppImage 和 deb，产物位于 `dist/`：
 
 ```bash
-chmod +x dist/Mineradio-2.2.0.AppImage
-./dist/Mineradio-2.2.0.AppImage
+chmod +x dist/Mineradio-2.2.0-linux.1.AppImage
+./dist/Mineradio-2.2.0-linux.1.AppImage
 
 # 或者
-sudo dpkg -i dist/mineradio_2.2.0_amd64.deb
+sudo dpkg -i dist/mineradio_2.2.0-linux.1_amd64.deb
 sudo apt-get install -f   # 补齐缺失依赖
 ```
 
@@ -97,7 +101,7 @@ deb 安装会自动配置 `chrome-sandbox` 权限和 `.desktop` 关联，推荐�
 也可以直接源码运行：`npm start`。
 
 > **AppImage 需要 libfuse2。** Ubuntu 24.04 及更新版本默认只装 fuse3，直接运行会报 `error loading libfuse.so.2`。安装 `sudo apt install libfuse2t64`（旧版本为 `libfuse2`），或改用
-> `APPIMAGE_EXTRACT_AND_RUN=1 ./dist/Mineradio-2.2.0.AppImage` 免 FUSE 运行。
+> `APPIMAGE_EXTRACT_AND_RUN=1 ./dist/Mineradio-2.2.0-linux.1.AppImage` 免 FUSE 运行。
 
 ### 系统要求
 
